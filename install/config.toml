@@ -1,0 +1,40 @@
+# omarchy-discord-theme configuration
+# All paths are relative to $HOME when starting with "~".
+
+# Discord client mod: "equicord" | "vencord" | "betterdiscord"
+# The installer sets this for you. When set, the matching per-client paths and
+# injection method below are used automatically unless you override them.
+client = "equicord"
+
+[paths]
+# Omarchy state dir holding the active theme (colors.toml + theme.name).
+theme_state_dir = "~/.local/state/omarchy/current"
+
+# Base Midnight CSS to derive the dynamic theme from. Can be a local file or a
+# remote URL (http/https). This is the flavor you want Discord to look like
+# (layout, sizes, animations) — credit refact0r/midnight-discord.
+midnight_css = "~/.config/omarchy/discord-theme/midnight.css"
+
+# Where the generated full theme file is cached (inspect it here).
+generated_css = "~/.cache/omarchy-discord-theme/generated.css"
+
+# Quick CSS file (Equicord / Vencord). These mods hot-reload it live, so writing
+# here updates Discord without a restart.
+discord_quickcss = "~/.config/Equicord/settings/quickCss.css"
+
+# Themes folder (BetterDiscord uses this). BetterDiscord loads *.theme.css at
+# startup; changes need Discord to reload the theme.
+discord_themes_dir = "~/.config/Equicord/themes"
+
+# How the generated CSS reaches Discord.
+#   quickcss  -> write to discord_quickcss (hot-reload; Equicord/Vencord)
+#   themesdir -> write a *.theme.css into discord_themes_dir (BetterDiscord)
+injection = "quickcss"
+
+[watch]
+enabled = true
+debounce_seconds = 1.0
+
+[logging]
+level = "info"          # debug | info | warn | error
+file = "~/.cache/omarchy-discord-theme/discord-theme.log"
